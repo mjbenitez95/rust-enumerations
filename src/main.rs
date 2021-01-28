@@ -36,4 +36,16 @@ fn main() {
         "Some number: {:?} and some string: \"{:?}\" and absent number == some: {}.",
         some_number, some_string, absent_number == Some(5)
     );
+
+    let x: i8 = 5;
+    let y: Option<i8> = None;
+    println!("y is Some: {}, y is None: {}.", y.is_some(), y.is_none());
+    
+    if y.is_some() {
+        let y_value = y.unwrap();
+        println!("{} plus {} is {}!", x, y_value, x+y_value);
+    } else {
+        println!("y contains None, and x is: {}.", x);
+    }
+    
 }
