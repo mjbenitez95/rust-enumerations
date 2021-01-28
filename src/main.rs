@@ -121,7 +121,7 @@ fn match_with_options(){
     let five = Some(5);
     let six = plus_one(five);
     let none = plus_one(None);
-    if(six.is_some()){
+    if six.is_some() {
         println!("The value of plus_one(five) is: {}!", six.unwrap());
     }
 
@@ -133,5 +133,34 @@ fn match_with_options(){
             7 => println!("Seven!"),
             _ => println!("Something else!")
         }
+    }
+}
+
+fn if_let() {
+    // these lines...
+    let some_u8_value = Some(0u8);
+    match some_u8_value {
+        Some(3) => println!("Three!"),
+        _ => (),
+    }
+
+    // ...are equivalent to these lines
+    if let Some(3) = some_u8_value {
+        println!("Three!");
+    }
+
+    // similarly, these lines...
+    let coin = Coin::Dime;
+    let mut count = 0;
+    match coin {
+        Coin::Quarter(ref state) => println!("State quarter from {:?}!", state),
+        _ => count += 1
+    }
+
+    // ...are equivalent to these lines
+    if let Coin::Quarter(us_state) = coin {
+        println!("State quarter from {:?}!", us_state);
+    } else {
+        count += 1
     }
 }
